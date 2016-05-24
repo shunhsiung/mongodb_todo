@@ -22,8 +22,8 @@ function edit()
 {
 	global $todos;
 	$id = myrequest('id');
-	$memo = myrequest('memo');
-	$udata = array('$set' => array('memo' => $memo));
+	$content = myrequest('content');
+	$udata = array('$set' => array('content' => $content));
 	$todos->update(['_id' => new MongoId($id)], $udata);
 }
 
@@ -37,10 +37,10 @@ function del()
 function addnew()
 {
 	global $todos;
-	$memo = myrequest('memo');
+	$content = myrequest('content');
 
 	$todo = array(
-		'memo' => $memo,
+		'content' => $content,
 		'created_at' => date('Y-m-d H:i:s'),
 	);
 
